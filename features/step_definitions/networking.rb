@@ -756,7 +756,7 @@ Given /^I run command on the#{OPT_QUOTED} node's ovnkube pod:$/ do |node_name, t
     pod.node_name == node_name
   }.first
   cache_resources ovnkube_pod
-  @result = ovnkube_pod.exec(network_cmd, as: admin)
+  @result = ovnkube_pod.exec(network_cmd, as: admin, container: "ovn-controller")
   raise "Failed to execute network command!" unless @result[:success]
 end
 
